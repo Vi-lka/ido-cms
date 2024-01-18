@@ -738,7 +738,7 @@ export interface ApiBookBook extends Schema.CollectionType {
     image: Attribute.Media;
     text: Attribute.Blocks;
     file: Attribute.Media;
-    order: Attribute.Integer;
+    order: Attribute.Integer & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -907,6 +907,51 @@ export interface ApiMainPageMainPage extends Schema.SingleType {
   };
 }
 
+export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
+  collectionName: 'method_resources';
+  info: {
+    singularName: 'method-resource';
+    pluralName: 'method-resources';
+    displayName: '\u041C\u0435\u0442\u043E\u0434\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u044B';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    image: Attribute.Media;
+    pdf: Attribute.Media;
+    video: Attribute.Media;
+    photos: Attribute.Media;
+    order: Attribute.Integer & Attribute.Unique;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::method-resource.method-resource',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::method-resource.method-resource',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -929,6 +974,7 @@ declare module '@strapi/types' {
       'api::event.event': ApiEventEvent;
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;
       'api::main-page.main-page': ApiMainPageMainPage;
+      'api::method-resource.method-resource': ApiMethodResourceMethodResource;
     }
   }
 }
