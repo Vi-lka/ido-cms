@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "events_categories",
+  "collectionName": "books_categories",
   "info": {
-    "singularName": "events-category",
-    "pluralName": "events-categories",
-    "displayName": "Рубрики (События)",
+    "singularName": "books-category",
+    "pluralName": "books-categories",
+    "displayName": "Разделы (Книги)",
     "description": ""
   },
   "options": {
@@ -15,8 +15,8 @@
     "title": {
       "type": "string",
       "required": true,
-      "maxLength": 255,
-      "unique": true
+      "unique": true,
+      "maxLength": 255
     },
     "image": {
       "type": "media",
@@ -35,10 +35,10 @@
       "type": "text",
       "maxLength": 800
     },
-    "events": {
+    "books": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::event.event",
+      "target": "api::book.book",
       "mappedBy": "category"
     }
   }

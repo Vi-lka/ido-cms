@@ -739,12 +739,65 @@ export interface ApiBookBook extends Schema.CollectionType {
     text: Attribute.Blocks;
     file: Attribute.Media;
     order: Attribute.Integer & Attribute.Unique;
+    category: Attribute.Relation<
+      'api::book.book',
+      'manyToOne',
+      'api::books-category.books-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBooksCategoryBooksCategory extends Schema.CollectionType {
+  collectionName: 'books_categories';
+  info: {
+    singularName: 'books-category';
+    pluralName: 'books-categories';
+    displayName: '\u0420\u0430\u0437\u0434\u0435\u043B\u044B (\u041A\u043D\u0438\u0433\u0438)';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    image: Attribute.Media;
+    slug: Attribute.UID<'api::books-category.books-category', 'title'> &
+      Attribute.Required;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 800;
+      }>;
+    books: Attribute.Relation<
+      'api::books-category.books-category',
+      'oneToMany',
+      'api::book.book'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::books-category.books-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::books-category.books-category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -800,12 +853,12 @@ export interface ApiEventEvent extends Schema.CollectionType {
     image: Attribute.Media;
     additionalImages: Attribute.Media;
     text: Attribute.Blocks & Attribute.Required;
+    order: Attribute.Integer & Attribute.Unique;
     category: Attribute.Relation<
       'api::event.event',
-      'oneToOne',
+      'manyToOne',
       'api::events-category.events-category'
     >;
-    order: Attribute.Integer & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -838,6 +891,7 @@ export interface ApiEventsCategoryEventsCategory extends Schema.CollectionType {
   attributes: {
     title: Attribute.String &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
@@ -848,6 +902,11 @@ export interface ApiEventsCategoryEventsCategory extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 800;
       }>;
+    events: Attribute.Relation<
+      'api::events-category.events-category',
+      'oneToMany',
+      'api::event.event'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -970,6 +1029,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::book.book': ApiBookBook;
+      'api::books-category.books-category': ApiBooksCategoryBooksCategory;
       'api::contact.contact': ApiContactContact;
       'api::event.event': ApiEventEvent;
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;

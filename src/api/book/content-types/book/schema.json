@@ -39,6 +39,12 @@
     "order": {
       "type": "integer",
       "unique": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::books-category.books-category",
+      "inversedBy": "books"
     }
   }
 }

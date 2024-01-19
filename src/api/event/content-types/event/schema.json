@@ -37,15 +37,16 @@
       "type": "blocks",
       "required": true
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::events-category.events-category"
-    },
     "order": {
       "type": "integer",
       "required": false,
       "unique": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::events-category.events-category",
+      "inversedBy": "events"
     }
   }
 }
