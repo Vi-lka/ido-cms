@@ -1011,6 +1011,38 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
   };
 }
 
+export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
+  collectionName: 'page_descriptions';
+  info: {
+    singularName: 'page-description';
+    pluralName: 'page-descriptions';
+    displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    library: Attribute.Blocks;
+    events: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::page-description.page-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::page-description.page-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1035,6 +1067,7 @@ declare module '@strapi/types' {
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::method-resource.method-resource': ApiMethodResourceMethodResource;
+      'api::page-description.page-description': ApiPageDescriptionPageDescription;
     }
   }
 }

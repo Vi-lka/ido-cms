@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_descriptions",
+  "info": {
+    "singularName": "page-description",
+    "pluralName": "page-descriptions",
+    "displayName": "Описания страниц",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "library": {
+      "type": "blocks"
+    },
+    "events": {
+      "type": "blocks"
+    }
+  }
+}
