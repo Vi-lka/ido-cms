@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_classic_date_components",
+  "info": {
+    "displayName": "DateComponentClassic",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

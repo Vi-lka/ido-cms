@@ -859,6 +859,12 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'manyToOne',
       'api::events-category.events-category'
     >;
+    date: Attribute.Component<'custom.date-component'> & Attribute.Required;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 600;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

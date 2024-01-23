@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_custom_date_components",
+  "info": {
+    "displayName": "DateComponentCustom",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "integer",
+      "required": true,
+      "max": 31,
+      "min": 1
+    },
+    "month": {
+      "type": "integer",
+      "required": true,
+      "max": 12,
+      "min": 1
+    },
+    "year": {
+      "type": "integer",
+      "required": true,
+      "max": 3000
+    }
+  }
+}

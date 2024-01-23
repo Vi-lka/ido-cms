@@ -47,6 +47,17 @@
       "relation": "manyToOne",
       "target": "api::events-category.events-category",
       "inversedBy": "events"
+    },
+    "date": {
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.date-component",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 600
     }
   }
 }
