@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_custom_video_embeds",
+  "info": {
+    "displayName": "VideoEmbed",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "embed": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

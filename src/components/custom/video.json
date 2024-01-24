@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_custom_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "slideshow"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

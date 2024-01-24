@@ -17,6 +17,9 @@
     },
     "events": {
       "type": "blocks"
+    },
+    "news": {
+      "type": "blocks"
     }
   }
 }

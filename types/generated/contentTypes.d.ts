@@ -1017,6 +1017,45 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: '\u041D\u043E\u0432\u043E\u0441\u0442\u0438';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    order: Attribute.Integer & Attribute.Unique;
+    image: Attribute.Media;
+    text: Attribute.Blocks & Attribute.Required;
+    content: Attribute.DynamicZone<
+      [
+        'custom.slider',
+        'custom.video-embed',
+        'custom.video',
+        'custom.rich-text'
+      ]
+    >;
+    date: Attribute.Date & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
   collectionName: 'page_descriptions';
   info: {
@@ -1031,6 +1070,7 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
   attributes: {
     library: Attribute.Blocks;
     events: Attribute.Blocks;
+    news: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1073,6 +1113,7 @@ declare module '@strapi/types' {
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::method-resource.method-resource': ApiMethodResourceMethodResource;
+      'api::new.new': ApiNewNew;
       'api::page-description.page-description': ApiPageDescriptionPageDescription;
     }
   }

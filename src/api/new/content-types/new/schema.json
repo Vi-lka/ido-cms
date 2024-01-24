@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news",
+  "info": {
+    "singularName": "new",
+    "pluralName": "news",
+    "displayName": "Новости",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "order": {
+      "type": "integer",
+      "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "text": {
+      "type": "blocks",
+      "required": true
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "custom.slider",
+        "custom.video-embed",
+        "custom.video",
+        "custom.rich-text"
+      ]
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_custom_rich_texts",
+  "info": {
+    "displayName": "Rich Text",
+    "icon": "medium"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "text": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

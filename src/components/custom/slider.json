@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_custom_sliders",
+  "info": {
+    "displayName": "Slider",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}
