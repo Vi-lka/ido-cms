@@ -58,6 +58,16 @@
       "type": "text",
       "required": true,
       "maxLength": 600
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "custom.rich-text",
+        "custom.files-list",
+        "custom.slider",
+        "custom.video-embed",
+        "custom.video"
+      ]
     }
   }
 }

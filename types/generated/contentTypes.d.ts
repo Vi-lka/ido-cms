@@ -744,6 +744,15 @@ export interface ApiBookBook extends Schema.CollectionType {
       'manyToOne',
       'api::books-category.books-category'
     >;
+    content: Attribute.DynamicZone<
+      [
+        'custom.rich-text',
+        'custom.files-list',
+        'custom.slider',
+        'custom.video',
+        'custom.video-embed'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -865,6 +874,15 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 600;
       }>;
+    content: Attribute.DynamicZone<
+      [
+        'custom.rich-text',
+        'custom.files-list',
+        'custom.slider',
+        'custom.video-embed',
+        'custom.video'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -999,6 +1017,15 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 500;
       }>;
+    content: Attribute.DynamicZone<
+      [
+        'custom.rich-text',
+        'custom.files-list',
+        'custom.slider',
+        'custom.video-embed',
+        'custom.video'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1042,7 +1069,8 @@ export interface ApiNewNew extends Schema.CollectionType {
         'custom.slider',
         'custom.video-embed',
         'custom.video',
-        'custom.rich-text'
+        'custom.rich-text',
+        'custom.files-list'
       ]
     >;
     date: Attribute.Date & Attribute.Required;

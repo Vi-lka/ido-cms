@@ -39,7 +39,8 @@
         "custom.slider",
         "custom.video-embed",
         "custom.video",
-        "custom.rich-text"
+        "custom.rich-text",
+        "custom.files-list"
       ]
     },
     "date": {

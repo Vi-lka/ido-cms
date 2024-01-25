@@ -45,6 +45,16 @@
       "relation": "manyToOne",
       "target": "api::books-category.books-category",
       "inversedBy": "books"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "custom.rich-text",
+        "custom.files-list",
+        "custom.slider",
+        "custom.video",
+        "custom.video-embed"
+      ]
     }
   }
 }

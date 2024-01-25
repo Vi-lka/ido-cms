@@ -40,6 +40,42 @@ export interface CustomDateComponent extends Schema.Component {
   };
 }
 
+export interface CustomFileItem extends Schema.Component {
+  collectionName: 'components_custom_file_items';
+  info: {
+    displayName: 'FileItem';
+    icon: 'attachment';
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    file: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CustomFilesList extends Schema.Component {
+  collectionName: 'components_custom_files_lists';
+  info: {
+    displayName: 'FilesList';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    list: Attribute.Component<'custom.file-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 1;
+      }>;
+  };
+}
+
 export interface CustomRichText extends Schema.Component {
   collectionName: 'components_custom_rich_texts';
   info: {
@@ -105,6 +141,8 @@ declare module '@strapi/types' {
     export interface Components {
       'classic.date-component': ClassicDateComponent;
       'custom.date-component': CustomDateComponent;
+      'custom.file-item': CustomFileItem;
+      'custom.files-list': CustomFilesList;
       'custom.rich-text': CustomRichText;
       'custom.slider': CustomSlider;
       'custom.video-embed': CustomVideoEmbed;

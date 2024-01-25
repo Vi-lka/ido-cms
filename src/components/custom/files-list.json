@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_custom_files_lists",
+  "info": {
+    "displayName": "FilesList",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.file-item",
+      "required": true,
+      "min": 1
+    }
+  }
+}
