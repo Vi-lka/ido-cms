@@ -26,34 +26,12 @@
         "images"
       ]
     },
-    "pdf": {
+    "additionalImages": {
       "type": "media",
       "multiple": true,
       "required": false,
       "allowedTypes": [
-        "files"
-      ]
-    },
-    "video": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "photos": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "order": {
@@ -74,6 +52,11 @@
         "custom.video-embed",
         "custom.video"
       ]
+    },
+    "files": {
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.files-list"
     }
   }
 }

@@ -1009,9 +1009,7 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
         maxLength: 255;
       }>;
     image: Attribute.Media;
-    pdf: Attribute.Media;
-    video: Attribute.Media;
-    photos: Attribute.Media;
+    additionalImages: Attribute.Media;
     order: Attribute.Integer & Attribute.Unique;
     description: Attribute.Text &
       Attribute.SetMinMaxLength<{
@@ -1026,6 +1024,7 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
         'custom.video'
       ]
     >;
+    files: Attribute.Component<'custom.files-list'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1099,6 +1098,7 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
     library: Attribute.Blocks;
     events: Attribute.Blocks;
     news: Attribute.Blocks;
+    methodological: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

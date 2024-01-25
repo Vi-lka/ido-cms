@@ -20,6 +20,9 @@
     },
     "news": {
       "type": "blocks"
+    },
+    "methodological": {
+      "type": "blocks"
     }
   }
 }
