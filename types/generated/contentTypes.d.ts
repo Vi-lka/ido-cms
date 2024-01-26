@@ -718,6 +718,44 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutAbout extends Schema.SingleType {
+  collectionName: 'about_plural';
+  info: {
+    singularName: 'about';
+    pluralName: 'about-plural';
+    displayName: '\u041E \u043D\u0430\u0441';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.DynamicZone<
+      [
+        'custom.rich-text',
+        'custom.slider',
+        'custom.video-embed',
+        'custom.video',
+        'custom.files-list'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBookBook extends Schema.CollectionType {
   collectionName: 'books';
   info: {
@@ -1099,6 +1137,7 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
     events: Attribute.Blocks;
     news: Attribute.Blocks;
     methodological: Attribute.Blocks;
+    projects: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1110,6 +1149,58 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::page-description.page-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: '\u041F\u0440\u043E\u0435\u043A\u0442\u044B';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 1000;
+      }>;
+    image: Attribute.Media;
+    additionalImages: Attribute.Media;
+    text: Attribute.Blocks;
+    content: Attribute.DynamicZone<
+      [
+        'custom.rich-text',
+        'custom.files-list',
+        'custom.slider',
+        'custom.video-embed',
+        'custom.video'
+      ]
+    >;
+    order: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
       'oneToOne',
       'admin::user'
     > &
@@ -1134,6 +1225,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about.about': ApiAboutAbout;
       'api::book.book': ApiBookBook;
       'api::books-category.books-category': ApiBooksCategoryBooksCategory;
       'api::contact.contact': ApiContactContact;
@@ -1143,6 +1235,7 @@ declare module '@strapi/types' {
       'api::method-resource.method-resource': ApiMethodResourceMethodResource;
       'api::new.new': ApiNewNew;
       'api::page-description.page-description': ApiPageDescriptionPageDescription;
+      'api::project.project': ApiProjectProject;
     }
   }
 }

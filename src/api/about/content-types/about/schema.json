@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_plural",
+  "info": {
+    "singularName": "about",
+    "pluralName": "about-plural",
+    "displayName": "О нас"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "custom.rich-text",
+        "custom.slider",
+        "custom.video-embed",
+        "custom.video",
+        "custom.files-list"
+      ]
+    }
+  }
+}
