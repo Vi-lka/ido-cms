@@ -777,11 +777,6 @@ export interface ApiBookBook extends Schema.CollectionType {
     text: Attribute.Blocks;
     file: Attribute.Media;
     order: Attribute.Integer & Attribute.Unique;
-    category: Attribute.Relation<
-      'api::book.book',
-      'manyToOne',
-      'api::books-category.books-category'
-    >;
     content: Attribute.DynamicZone<
       [
         'custom.rich-text',
@@ -791,60 +786,17 @@ export interface ApiBookBook extends Schema.CollectionType {
         'custom.video-embed'
       ]
     >;
+    section: Attribute.Relation<
+      'api::book.book',
+      'manyToOne',
+      'api::section.section'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiBooksCategoryBooksCategory extends Schema.CollectionType {
-  collectionName: 'books_categories';
-  info: {
-    singularName: 'books-category';
-    pluralName: 'books-categories';
-    displayName: '\u0420\u0430\u0437\u0434\u0435\u043B\u044B (\u041A\u043D\u0438\u0433\u0438)';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    image: Attribute.Media;
-    slug: Attribute.UID<'api::books-category.books-category', 'title'> &
-      Attribute.Required;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 800;
-      }>;
-    books: Attribute.Relation<
-      'api::books-category.books-category',
-      'oneToMany',
-      'api::book.book'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::books-category.books-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::books-category.books-category',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1063,6 +1015,11 @@ export interface ApiMethodResourceMethodResource extends Schema.CollectionType {
       ]
     >;
     files: Attribute.Component<'custom.files-list'>;
+    section: Attribute.Relation<
+      'api::method-resource.method-resource',
+      'manyToOne',
+      'api::section.section'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1133,11 +1090,11 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    library: Attribute.Blocks;
-    events: Attribute.Blocks;
-    news: Attribute.Blocks;
-    methodological: Attribute.Blocks;
-    projects: Attribute.Blocks;
+    library: Attribute.Component<'custom.description'>;
+    events: Attribute.Component<'custom.description'>;
+    news: Attribute.Component<'custom.description'>;
+    methodological: Attribute.Component<'custom.description'>;
+    projects: Attribute.Component<'custom.description'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1208,6 +1165,59 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiSectionSection extends Schema.CollectionType {
+  collectionName: 'sections';
+  info: {
+    singularName: 'section';
+    pluralName: 'sections';
+    displayName: '\u0420\u0430\u0437\u0434\u0435\u043B\u044B';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    slug: Attribute.UID<'api::section.section', 'title'> & Attribute.Required;
+    image: Attribute.Media;
+    text: Attribute.Blocks;
+    books: Attribute.Relation<
+      'api::section.section',
+      'oneToMany',
+      'api::book.book'
+    >;
+    method_resources: Attribute.Relation<
+      'api::section.section',
+      'oneToMany',
+      'api::method-resource.method-resource'
+    >;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 1000;
+      }>;
+    order: Attribute.Integer & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::section.section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::section.section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1227,7 +1237,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::book.book': ApiBookBook;
-      'api::books-category.books-category': ApiBooksCategoryBooksCategory;
       'api::contact.contact': ApiContactContact;
       'api::event.event': ApiEventEvent;
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;
@@ -1236,6 +1245,7 @@ declare module '@strapi/types' {
       'api::new.new': ApiNewNew;
       'api::page-description.page-description': ApiPageDescriptionPageDescription;
       'api::project.project': ApiProjectProject;
+      'api::section.section': ApiSectionSection;
     }
   }
 }

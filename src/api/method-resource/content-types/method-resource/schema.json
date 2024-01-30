@@ -57,6 +57,12 @@
       "type": "component",
       "repeatable": false,
       "component": "custom.files-list"
+    },
+    "section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "method_resources"
     }
   }
 }

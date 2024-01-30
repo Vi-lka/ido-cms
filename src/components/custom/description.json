@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_custom_descriptions",
+  "info": {
+    "displayName": "Description",
+    "icon": "question"
+  },
+  "options": {},
+  "attributes": {
+    "short": {
+      "type": "text",
+      "maxLength": 1000
+    },
+    "full": {
+      "type": "blocks"
+    }
+  }
+}

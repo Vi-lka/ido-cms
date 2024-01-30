@@ -13,19 +13,29 @@
   "pluginOptions": {},
   "attributes": {
     "library": {
-      "type": "blocks"
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     },
     "events": {
-      "type": "blocks"
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     },
     "news": {
-      "type": "blocks"
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     },
     "methodological": {
-      "type": "blocks"
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     },
     "projects": {
-      "type": "blocks"
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     }
   }
 }

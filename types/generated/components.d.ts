@@ -40,6 +40,21 @@ export interface CustomDateComponent extends Schema.Component {
   };
 }
 
+export interface CustomDescription extends Schema.Component {
+  collectionName: 'components_custom_descriptions';
+  info: {
+    displayName: 'Description';
+    icon: 'question';
+  };
+  attributes: {
+    short: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 1000;
+      }>;
+    full: Attribute.Blocks;
+  };
+}
+
 export interface CustomFileItem extends Schema.Component {
   collectionName: 'components_custom_file_items';
   info: {
@@ -141,6 +156,7 @@ declare module '@strapi/types' {
     export interface Components {
       'classic.date-component': ClassicDateComponent;
       'custom.date-component': CustomDateComponent;
+      'custom.description': CustomDescription;
       'custom.file-item': CustomFileItem;
       'custom.files-list': CustomFilesList;
       'custom.rich-text': CustomRichText;

@@ -40,12 +40,6 @@
       "type": "integer",
       "unique": true
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::books-category.books-category",
-      "inversedBy": "books"
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -55,6 +49,12 @@
         "custom.video",
         "custom.video-embed"
       ]
+    },
+    "section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "books"
     }
   }
 }
