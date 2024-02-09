@@ -31,6 +31,9 @@ module.exports = ({ env }) => ({
                       user: env('SMTP_USERNAME'),
                       pass: env('SMTP_PASSWORD'),
                     },
+                    pool: true,
+                    logger: true,
+                    maxConnections: 10000
                   // ... any custom nodemailer options
                 },
                 settings: {

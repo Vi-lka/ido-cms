@@ -1267,40 +1267,6 @@ export interface ApiSectionSection extends Schema.CollectionType {
   };
 }
 
-export interface ApiSubscriberSubscriber extends Schema.SingleType {
-  collectionName: 'subscribers';
-  info: {
-    singularName: 'subscriber';
-    pluralName: 'subscribers';
-    displayName: '\u041F\u043E\u0434\u043F\u0438\u0441\u0447\u0438\u043A\u0438';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    users: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToMany',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1330,7 +1296,6 @@ declare module '@strapi/types' {
       'api::page-description.page-description': ApiPageDescriptionPageDescription;
       'api::project.project': ApiProjectProject;
       'api::section.section': ApiSectionSection;
-      'api::subscriber.subscriber': ApiSubscriberSubscriber;
     }
   }
 }
