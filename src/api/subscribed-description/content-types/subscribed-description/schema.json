@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "subscribed_descriptions",
+  "info": {
+    "singularName": "subscribed-description",
+    "pluralName": "subscribed-descriptions",
+    "displayName": "Описание подписки"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subscribed": {
+      "type": "blocks"
+    },
+    "not_subscribed": {
+      "type": "blocks"
+    }
+  }
+}
