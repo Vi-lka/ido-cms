@@ -1,5 +1,5 @@
 module.exports = {  
-    '* * * * *': async ({ strapi }) => {
+    '*/5 * * * *': async ({ strapi }) => {
         console.log('cron running')
         try {
             let currentDate = new Date()
