@@ -1299,6 +1299,41 @@ export interface ApiSubscribedDescriptionSubscribedDescription
   };
 }
 
+export interface ApiSuggestDescriptionSuggestDescription
+  extends Schema.SingleType {
+  collectionName: 'suggest_descriptions';
+  info: {
+    singularName: 'suggest-description';
+    pluralName: 'suggest-descriptions';
+    displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 "\u041F\u0440\u0435\u0434\u043B\u043E\u0436\u0438\u0442\u044C \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u044E"';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description_short: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    description_long: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::suggest-description.suggest-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::suggest-description.suggest-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1329,6 +1364,7 @@ declare module '@strapi/types' {
       'api::project.project': ApiProjectProject;
       'api::section.section': ApiSectionSection;
       'api::subscribed-description.subscribed-description': ApiSubscribedDescriptionSubscribedDescription;
+      'api::suggest-description.suggest-description': ApiSuggestDescriptionSuggestDescription;
     }
   }
 }

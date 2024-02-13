@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "suggest_descriptions",
+  "info": {
+    "singularName": "suggest-description",
+    "pluralName": "suggest-descriptions",
+    "displayName": "Описание \"Предложить публикацию\""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description_short": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "description_long": {
+      "type": "blocks"
+    }
+  }
+}
