@@ -706,6 +706,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::suggest.suggest'
     >;
+    feedback: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::feedback.feedback'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -986,6 +991,81 @@ export interface ApiEventsCategoryEventsCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::events-category.events-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeedbackFeedback extends Schema.CollectionType {
+  collectionName: 'feedbacks';
+  info: {
+    singularName: 'feedback';
+    pluralName: 'feedbacks';
+    displayName: '\u041E\u0431\u0440\u0430\u0442\u043D\u0430\u044F \u0441\u0432\u044F\u0437\u044C';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    user: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeedbackDescriptionFeedbackDescription
+  extends Schema.SingleType {
+  collectionName: 'feedback_descriptions';
+  info: {
+    singularName: 'feedback-description';
+    pluralName: 'feedback-descriptions';
+    displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 "\u041E\u0431\u0440\u0430\u0442\u043D\u0430\u044F \u0441\u0432\u044F\u0437\u044C"';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description_short: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    description_long: Attribute.Blocks;
+    feedbackExist: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feedback-description.feedback-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feedback-description.feedback-description',
       'oneToOne',
       'admin::user'
     > &
@@ -1418,6 +1498,8 @@ declare module '@strapi/types' {
       'api::contact.contact': ApiContactContact;
       'api::event.event': ApiEventEvent;
       'api::events-category.events-category': ApiEventsCategoryEventsCategory;
+      'api::feedback.feedback': ApiFeedbackFeedback;
+      'api::feedback-description.feedback-description': ApiFeedbackDescriptionFeedbackDescription;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::method-resource.method-resource': ApiMethodResourceMethodResource;
       'api::new.new': ApiNewNew;

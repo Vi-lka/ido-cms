@@ -33,6 +33,20 @@ module.exports = {
                 });
               },
             });
+            t.field("feedback", {
+              type: "FeedbackEntityResponse",
+              resolve: async (root, args) => {
+                const userData = await strapi.db.query("plugin::users-permissions.user").findOne({
+                  select: [],
+                  where: { id: root.id },
+                  populate: { feedback: true },
+                });
+                return toEntityResponse(userData.feedback ?? null, {
+                  args,
+                  resourceUID: "api::feedback.feedback",
+                });
+              },
+            });
           },
         }),
       ]

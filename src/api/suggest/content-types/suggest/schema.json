@@ -16,7 +16,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "suggest"
+      "mappedBy": "suggest"
     },
     "title": {
       "type": "string",
