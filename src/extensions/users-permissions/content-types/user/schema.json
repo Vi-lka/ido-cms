@@ -68,6 +68,12 @@
     "subscribed": {
       "type": "boolean",
       "default": false
+    },
+    "suggest": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::suggest.suggest",
+      "inversedBy": "user"
     }
   }
 }

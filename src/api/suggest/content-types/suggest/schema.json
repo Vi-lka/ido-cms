@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "suggests",
+  "info": {
+    "singularName": "suggest",
+    "pluralName": "suggests",
+    "displayName": "Преложить публикацию",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "suggest"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 255,
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "maxLength": 255,
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "text": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 1
+    }
+  }
+}

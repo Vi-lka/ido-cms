@@ -701,6 +701,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     subscribed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    suggest: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::suggest.suggest'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1299,6 +1304,60 @@ export interface ApiSubscribedDescriptionSubscribedDescription
   };
 }
 
+export interface ApiSuggestSuggest extends Schema.CollectionType {
+  collectionName: 'suggests';
+  info: {
+    singularName: 'suggest';
+    pluralName: 'suggests';
+    displayName: '\u041F\u0440\u0435\u043B\u043E\u0436\u0438\u0442\u044C \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u044E';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::suggest.suggest',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    type: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    date: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    text: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::suggest.suggest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::suggest.suggest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSuggestDescriptionSuggestDescription
   extends Schema.SingleType {
   collectionName: 'suggest_descriptions';
@@ -1306,6 +1365,7 @@ export interface ApiSuggestDescriptionSuggestDescription
     singularName: 'suggest-description';
     pluralName: 'suggest-descriptions';
     displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 "\u041F\u0440\u0435\u0434\u043B\u043E\u0436\u0438\u0442\u044C \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u044E"';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1316,6 +1376,7 @@ export interface ApiSuggestDescriptionSuggestDescription
         maxLength: 300;
       }>;
     description_long: Attribute.Blocks;
+    suggestExist: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1364,6 +1425,7 @@ declare module '@strapi/types' {
       'api::project.project': ApiProjectProject;
       'api::section.section': ApiSectionSection;
       'api::subscribed-description.subscribed-description': ApiSubscribedDescriptionSubscribedDescription;
+      'api::suggest.suggest': ApiSuggestSuggest;
       'api::suggest-description.suggest-description': ApiSuggestDescriptionSuggestDescription;
     }
   }

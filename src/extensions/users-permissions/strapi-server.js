@@ -7,6 +7,7 @@ module.exports = (plugin) => {
         const updatedUserData = {
         // ...ctx.request.body,
             subscribed: ctx.request.body.subscribed,
+            suggest: ctx.request.body.suggest
             // username: ctx.state.user.username || ctx.request.body.username,
             // email: ctx.state.user.email || ctx.request.body.email,
         // change the above code to reflect the fields you want the user to be able to update. 

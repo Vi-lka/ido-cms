@@ -4,7 +4,8 @@
   "info": {
     "singularName": "suggest-description",
     "pluralName": "suggest-descriptions",
-    "displayName": "Описание \"Предложить публикацию\""
+    "displayName": "Описание \"Предложить публикацию\"",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,9 @@
       "maxLength": 300
     },
     "description_long": {
+      "type": "blocks"
+    },
+    "suggestExist": {
       "type": "blocks"
     }
   }
