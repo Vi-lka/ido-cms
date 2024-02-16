@@ -1247,6 +1247,37 @@ export interface ApiPageDescriptionPageDescription extends Schema.SingleType {
   };
 }
 
+export interface ApiPolicyPolicy extends Schema.SingleType {
+  collectionName: 'policies';
+  info: {
+    singularName: 'policy';
+    pluralName: 'policies';
+    displayName: '\u041F\u043E\u043B\u0438\u0442\u0438\u043A\u0430 \u043A\u043E\u043D\u0444\u0438\u0434\u0435\u043D\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u0438';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    file: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::policy.policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::policy.policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1504,6 +1535,7 @@ declare module '@strapi/types' {
       'api::method-resource.method-resource': ApiMethodResourceMethodResource;
       'api::new.new': ApiNewNew;
       'api::page-description.page-description': ApiPageDescriptionPageDescription;
+      'api::policy.policy': ApiPolicyPolicy;
       'api::project.project': ApiProjectProject;
       'api::section.section': ApiSectionSection;
       'api::subscribed-description.subscribed-description': ApiSubscribedDescriptionSubscribedDescription;
