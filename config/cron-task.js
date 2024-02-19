@@ -12,7 +12,7 @@ module.exports = {
             let seconds = currentDate.getSeconds()
             let milliseconds = currentDate.getMilliseconds()
             //build the new date according the changes you want to do
-            let newDate = new Date(year, month, day - 7, hours, minutes, seconds, milliseconds )
+            let newDate = new Date(year, month, day - 7, hours, minutes, seconds, milliseconds)
 
             const events = await strapi.entityService.findMany('api::event.event', {
                 filters: { createdAt: { $gt: newDate.toISOString() } },
