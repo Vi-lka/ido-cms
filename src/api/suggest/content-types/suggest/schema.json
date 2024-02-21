@@ -36,6 +36,11 @@
       "type": "richtext",
       "required": true,
       "minLength": 1
+    },
+    "accepted": {
+      "type": "boolean",
+      "default": false,
+      "private": true
     }
   }
 }

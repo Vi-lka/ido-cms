@@ -11,7 +11,7 @@ module.exports = {
                 },
                 {
                   // required - Ref ID defined in the template designer (won't change on import)
-                  templateReferenceId: 4,
+                  templateReferenceId: 5,
                   // Can include variables like `Thank you for your order {{= USER.firstName }}!`
                   subject: `История края - Новый запрос на обратную связь`,
                 },

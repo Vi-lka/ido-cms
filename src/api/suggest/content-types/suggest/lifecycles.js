@@ -24,28 +24,50 @@ module.exports = {
     async afterUpdate(event) {
         const { data, where } = event.params
 
-        if (data.publishedAt !== null) {
+        if (data.publishedAt !== null && data.publishedAt !== undefined) {
             const id = where.id;
             const existingData = await strapi.entityService.findOne("api::suggest.suggest", id, {
                 populate: ["user"],
             })
 
-            try {
-                await strapi.plugin('email-designer').service('email').sendTemplatedEmail(
-                    {
-                      // required
-                      to: existingData.user.email,
-                      // attachments: [],
-                    },
-                    {
-                      // required - Ref ID defined in the template designer (won't change on import)
-                      templateReferenceId: 3,
-                      // Can include variables like `Thank you for your order {{= USER.firstName }}!`
-                      subject: `История края - Мы рассмотрели вашу публикацию`,
-                    },
-                );
-            } catch (err) {
-                strapi.log.debug('📺: ', err);
+            console.log(existingData.accepted)
+
+            if (existingData.accepted) {
+                try {
+                    await strapi.plugin('email-designer').service('email').sendTemplatedEmail(
+                        {
+                          // required
+                          to: existingData.user.email,
+                          // attachments: [],
+                        },
+                        {
+                          // required - Ref ID defined in the template designer (won't change on import)
+                          templateReferenceId: 3,
+                          // Can include variables like `Thank you for your order {{= USER.firstName }}!`
+                          subject: `История края - Мы рассмотрели вашу публикацию`,
+                        },
+                    );
+                } catch (err) {
+                    strapi.log.debug('📺: ', err);
+                }
+            } else {
+                try {
+                    await strapi.plugin('email-designer').service('email').sendTemplatedEmail(
+                        {
+                          // required
+                          to: existingData.user.email,
+                          // attachments: [],
+                        },
+                        {
+                          // required - Ref ID defined in the template designer (won't change on import)
+                          templateReferenceId: 4,
+                          // Can include variables like `Thank you for your order {{= USER.firstName }}!`
+                          subject: `История края - Мы рассмотрели вашу публикацию`,
+                        },
+                    );
+                } catch (err) {
+                    strapi.log.debug('📺: ', err);
+                }
             }
         }
     },

@@ -1451,6 +1451,9 @@ export interface ApiSuggestSuggest extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
+    accepted: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
