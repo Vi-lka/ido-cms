@@ -6,7 +6,7 @@ module.exports = {
             await strapi.plugin('email-designer').service('email').sendTemplatedEmail(
                 {
                   // required
-                  to: "history24@kipk.ru",
+                  to: "vereschagina@kipk.ru",
                   // attachments: [],
                 },
                 {
