@@ -25,9 +25,6 @@
         "images"
       ]
     },
-    "text": {
-      "type": "blocks"
-    },
     "file": {
       "type": "media",
       "multiple": false,
@@ -55,6 +52,9 @@
       "relation": "manyToOne",
       "target": "api::section.section",
       "inversedBy": "books"
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

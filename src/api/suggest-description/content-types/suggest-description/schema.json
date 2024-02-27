@@ -17,10 +17,10 @@
       "maxLength": 300
     },
     "description_long": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "suggestExist": {
-      "type": "blocks"
+      "type": "richtext"
     }
   }
 }

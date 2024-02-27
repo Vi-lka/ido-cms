@@ -2,7 +2,8 @@
   "collectionName": "components_custom_descriptions",
   "info": {
     "displayName": "Description",
-    "icon": "question"
+    "icon": "question",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,7 +12,7 @@
       "maxLength": 1000
     },
     "full": {
-      "type": "blocks"
+      "type": "richtext"
     }
   }
 }

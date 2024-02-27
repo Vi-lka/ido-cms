@@ -33,10 +33,6 @@
         "images"
       ]
     },
-    "text": {
-      "type": "blocks",
-      "required": true
-    },
     "order": {
       "type": "integer",
       "required": false,
@@ -68,6 +64,9 @@
         "custom.video-embed",
         "custom.video"
       ]
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subscribed-description",
     "pluralName": "subscribed-descriptions",
-    "displayName": "Описание подписки"
+    "displayName": "Описание подписки",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,10 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "subscribed": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "not_subscribed": {
-      "type": "blocks"
+      "type": "richtext"
     }
   }
 }

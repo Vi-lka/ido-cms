@@ -4,7 +4,8 @@
   "info": {
     "singularName": "feedback-description",
     "pluralName": "feedback-descriptions",
-    "displayName": "Описание \"Обратная связь\""
+    "displayName": "Описание \"Обратная связь\"",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,10 +17,10 @@
       "maxLength": 300
     },
     "description_long": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "feedbackExist": {
-      "type": "blocks"
+      "type": "richtext"
     }
   }
 }

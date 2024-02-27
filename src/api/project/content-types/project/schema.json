@@ -37,9 +37,6 @@
         "images"
       ]
     },
-    "text": {
-      "type": "blocks"
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -52,6 +49,9 @@
     },
     "order": {
       "type": "integer"
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

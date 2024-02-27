@@ -833,7 +833,6 @@ export interface ApiBookBook extends Schema.CollectionType {
         maxLength: 255;
       }>;
     image: Attribute.Media;
-    text: Attribute.Blocks;
     file: Attribute.Media;
     order: Attribute.Integer & Attribute.Unique;
     content: Attribute.DynamicZone<
@@ -850,6 +849,7 @@ export interface ApiBookBook extends Schema.CollectionType {
       'manyToOne',
       'api::section.section'
     >;
+    text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -910,7 +910,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
       }>;
     image: Attribute.Media;
     additionalImages: Attribute.Media;
-    text: Attribute.Blocks & Attribute.Required;
     order: Attribute.Integer & Attribute.Unique;
     category: Attribute.Relation<
       'api::event.event',
@@ -932,6 +931,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
         'custom.video'
       ]
     >;
+    text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1044,6 +1044,7 @@ export interface ApiFeedbackDescriptionFeedbackDescription
     singularName: 'feedback-description';
     pluralName: 'feedback-descriptions';
     displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 "\u041E\u0431\u0440\u0430\u0442\u043D\u0430\u044F \u0441\u0432\u044F\u0437\u044C"';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1053,8 +1054,8 @@ export interface ApiFeedbackDescriptionFeedbackDescription
       Attribute.SetMinMaxLength<{
         maxLength: 300;
       }>;
-    description_long: Attribute.Blocks;
-    feedbackExist: Attribute.Blocks;
+    description_long: Attribute.RichText;
+    feedbackExist: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1191,7 +1192,6 @@ export interface ApiNewNew extends Schema.CollectionType {
       }>;
     order: Attribute.Integer & Attribute.Unique;
     image: Attribute.Media;
-    text: Attribute.Blocks & Attribute.Required;
     content: Attribute.DynamicZone<
       [
         'custom.slider',
@@ -1202,6 +1202,7 @@ export interface ApiNewNew extends Schema.CollectionType {
       ]
     >;
     date: Attribute.Date & Attribute.Required;
+    text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1301,7 +1302,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       }>;
     image: Attribute.Media;
     additionalImages: Attribute.Media;
-    text: Attribute.Blocks;
     content: Attribute.DynamicZone<
       [
         'custom.rich-text',
@@ -1312,6 +1312,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       ]
     >;
     order: Attribute.Integer;
+    text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1349,7 +1350,6 @@ export interface ApiSectionSection extends Schema.CollectionType {
       }>;
     slug: Attribute.UID<'api::section.section', 'title'> & Attribute.Required;
     image: Attribute.Media;
-    text: Attribute.Blocks;
     books: Attribute.Relation<
       'api::section.section',
       'oneToMany',
@@ -1365,6 +1365,7 @@ export interface ApiSectionSection extends Schema.CollectionType {
         maxLength: 1000;
       }>;
     order: Attribute.Integer & Attribute.Unique;
+    text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1390,13 +1391,14 @@ export interface ApiSubscribedDescriptionSubscribedDescription
     singularName: 'subscribed-description';
     pluralName: 'subscribed-descriptions';
     displayName: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043F\u043E\u0434\u043F\u0438\u0441\u043A\u0438';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    subscribed: Attribute.Blocks;
-    not_subscribed: Attribute.Blocks;
+    subscribed: Attribute.RichText;
+    not_subscribed: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1489,8 +1491,8 @@ export interface ApiSuggestDescriptionSuggestDescription
       Attribute.SetMinMaxLength<{
         maxLength: 300;
       }>;
-    description_long: Attribute.Blocks;
-    suggestExist: Attribute.Blocks;
+    description_long: Attribute.RichText;
+    suggestExist: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

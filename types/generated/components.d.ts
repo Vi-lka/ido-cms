@@ -45,13 +45,14 @@ export interface CustomDescription extends Schema.Component {
   info: {
     displayName: 'Description';
     icon: 'question';
+    description: '';
   };
   attributes: {
     short: Attribute.Text &
       Attribute.SetMinMaxLength<{
         maxLength: 1000;
       }>;
-    full: Attribute.Blocks;
+    full: Attribute.RichText;
   };
 }
 
@@ -96,13 +97,14 @@ export interface CustomRichText extends Schema.Component {
   info: {
     displayName: 'Rich Text';
     icon: 'medium';
+    description: '';
   };
   attributes: {
     title: Attribute.String &
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-    text: Attribute.Blocks & Attribute.Required;
+    text: Attribute.RichText;
   };
 }
 

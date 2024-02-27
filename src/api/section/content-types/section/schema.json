@@ -30,9 +30,6 @@
         "images"
       ]
     },
-    "text": {
-      "type": "blocks"
-    },
     "books": {
       "type": "relation",
       "relation": "oneToMany",
@@ -52,6 +49,9 @@
     "order": {
       "type": "integer",
       "unique": true
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

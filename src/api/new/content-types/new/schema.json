@@ -29,10 +29,6 @@
         "images"
       ]
     },
-    "text": {
-      "type": "blocks",
-      "required": true
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -46,6 +42,9 @@
     "date": {
       "type": "date",
       "required": true
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }
