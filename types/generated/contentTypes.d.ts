@@ -896,7 +896,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
   info: {
     singularName: 'event';
     pluralName: 'events';
-    displayName: '\u0421\u043E\u0431\u044B\u0442\u0438\u044F';
+    displayName: '\u0414\u0435\u043D\u044C \u0432 \u0438\u0441\u0442\u043E\u0440\u0438\u0438 \u043A\u0440\u0430\u044F';
     description: '';
   };
   options: {
@@ -955,7 +955,7 @@ export interface ApiEventsCategoryEventsCategory extends Schema.CollectionType {
   info: {
     singularName: 'events-category';
     pluralName: 'events-categories';
-    displayName: '\u0420\u0443\u0431\u0440\u0438\u043A\u0438 (\u0421\u043E\u0431\u044B\u0442\u0438\u044F)';
+    displayName: '\u0420\u0443\u0431\u0440\u0438\u043A\u0438 (\u0414\u0435\u043D\u044C \u0432 \u0438\u0441\u0442\u043E\u0440\u0438\u0438 \u043A\u0440\u0430\u044F)';
     description: '';
   };
   options: {
