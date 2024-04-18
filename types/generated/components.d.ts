@@ -22,21 +22,30 @@ export interface CustomDateComponent extends Schema.Component {
   attributes: {
     day: Attribute.Integer &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 31;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 31;
+        },
+        number
+      >;
     month: Attribute.Integer &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 12;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 12;
+        },
+        number
+      >;
     year: Attribute.Integer &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        max: 3000;
-      }>;
+      Attribute.SetMinMax<
+        {
+          max: 3000;
+        },
+        number
+      >;
   };
 }
 
@@ -86,9 +95,12 @@ export interface CustomFilesList extends Schema.Component {
       }>;
     list: Attribute.Component<'custom.file-item', true> &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
   };
 }
 

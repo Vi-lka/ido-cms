@@ -36,6 +36,11 @@
       "type": "component",
       "repeatable": false,
       "component": "custom.description"
+    },
+    "museum": {
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.description"
     }
   }
 }

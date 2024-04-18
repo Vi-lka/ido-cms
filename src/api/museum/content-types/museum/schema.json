@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "museums",
+  "info": {
+    "singularName": "museum",
+    "pluralName": "museums",
+    "displayName": "Музей",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "additionalImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "unique": true
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "maxLength": 600
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::museum-category.museum-category",
+      "inversedBy": "museum"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "custom.rich-text",
+        "custom.files-list",
+        "custom.slider",
+        "custom.video-embed",
+        "custom.video"
+      ]
+    }
+  }
+}

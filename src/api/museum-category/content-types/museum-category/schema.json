@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "museum_categories",
+  "info": {
+    "singularName": "museum-category",
+    "pluralName": "museum-categories",
+    "displayName": "Категории (Музей)",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 255
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 800
+    },
+    "museum": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::museum.museum",
+      "mappedBy": "category"
+    }
+  }
+}
