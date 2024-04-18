@@ -14,6 +14,9 @@ module.exports = {
             //build the new date according the changes you want to do
             let newDate = new Date(year, month, day - 7, hours, minutes, seconds, milliseconds)
 
+            const museums = await strapi.entityService.findMany('api::museum.museum', {
+                filters: { createdAt: { $gt: newDate.toISOString() } },
+            });
             const events = await strapi.entityService.findMany('api::event.event', {
                 filters: { createdAt: { $gt: newDate.toISOString() } },
             });
@@ -30,7 +33,7 @@ module.exports = {
                 filters: { createdAt: { $gt: newDate.toISOString() } },
             });
 
-            const allCount = events.length + methodResources.length + books.length + news.length + projects.length
+            const allCount = museums.length + events.length + methodResources.length + books.length + news.length + projects.length
 
             if (allCount === 0) {
                 strapi.log.debug('📺: ', "No new content.");
